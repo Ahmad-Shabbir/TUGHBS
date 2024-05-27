@@ -31,7 +31,7 @@ class RoomController extends Controller
         $room->total_child = $request->total_child;
         $room->room_capacity = $request->room_capacity;
         $room->price = $request->price;
-
+        $room->category = $request->category;
         $room->size = $request->size;
         $room->bed_style = $request->bed_style;
         $room->discount = $request->discount;

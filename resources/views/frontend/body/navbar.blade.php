@@ -37,17 +37,17 @@
                                 </li>
 
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        Recreation
+                                <a href="{{ route('show.gallery') }}" class="nav-link">
+                                    Gallery
                                     </a>
 
                                 </li>
 
-                                <li class="nav-item">
+                                <!-- <li class="nav-item">
                                     <a href="#" class="nav-link">
                                         Blog
                                     </a>
-                                </li>
+                                </li> -->
 
 @php
 $room = App\Models\Room::latest()->get();
@@ -56,9 +56,9 @@ $room = App\Models\Room::latest()->get();
                                 <li class="nav-item">
                                 <a href="{{ route('froom.all') }}" class="nav-link">
                                         All Rooms
-                                        <i class='bx bx-chevron-down'></i>
+                                        <!-- <i class='bx bx-chevron-down'></i> -->
                                     </a>
-                                    <ul class="dropdown-menu">
+                                    <!-- <ul class="dropdown-menu">
                                     @foreach ($room  as $item) 
                                         <li class="nav-item">
                                             <a href="room.html" class="nav-link">
@@ -66,23 +66,23 @@ $room = App\Models\Room::latest()->get();
                                             </a>
                                         </li>
                                         @endforeach
-                                    </ul>
+                                    </ul> -->
                                 </li>
 
                                 <li class="nav-item">
-                                    <a href="contact.html" class="nav-link">
+                                <a href="{{ route('contact.us') }}" class="nav-link">
                                         Contact
                                     </a>
                                 </li>
 
-                                <li class="nav-item-btn">
+                                <!-- <li class="nav-item-btn">
                                     <a href="#" class="default-btn btn-bg-one border-radius-5">Book Now</a>
-                                </li>
+                                </li> -->
                             </ul>
 
-                            <div class="nav-btn">
-                                <a href="#" class="default-btn btn-bg-one border-radius-5">Book Now</a>
-                            </div>
+                            <!-- <div class="nav-btn">
+                                <a href="{{ route('check_room_availability') }}" class="default-btn btn-bg-one border-radius-5">Book Now</a>
+                            </div> -->
                         </div>
                     </nav>
                 </div>

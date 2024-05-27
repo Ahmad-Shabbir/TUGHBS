@@ -75,6 +75,8 @@
                                     </div>
                                 </div>
 
+
+
                                 <div class="col-lg-12 col-md-12">
                                     <button type="submit" class="default-btn btn-bg-three border-radius-5">
                                         Book Now
@@ -191,9 +193,9 @@
                     </div>
 
                     <div class="room-details-review">
-                        <h2>Clients Review and Retting's</h2>
+                        <h2>Clients Review and Rating's</h2>
                         <div class="review-ratting">
-                            <h3>Your retting: </h3>
+                            <h3>Your rating: </h3>
                             <i class='bx bx-star'></i>
                             <i class='bx bx-star'></i>
                             <i class='bx bx-star'></i>
@@ -249,7 +251,7 @@
                                  <h3>
                                  <a href="{{ url('room/details/'.$item->id) }}">{{ $item['type']['name'] }}</a>
                                 </h3>
-                                <span>{{ $item->price }} / Per Night </span>
+                                <span>{{ $item->price }} /INR Per Night </span>
                                 <div class="rating">
                                     <i class='bx bxs-star'></i>
                                     <i class='bx bxs-star'></i>

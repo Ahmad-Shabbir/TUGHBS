@@ -42,7 +42,7 @@
 <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
   <div class="card-header">Total Booking</div>
   <div class="card-body">
-   <h1 class="card-title" style="font-size: 45px;">3 Total</h1>
+   <h1 class="card-title" style="font-size: 45px;">2 Total</h1>
     
   </div>
 </div>                   
@@ -52,7 +52,7 @@
 <div class="card text-white bg-warning mb-3" style="max-width: 18rem;">
   <div class="card-header">Pending Booking </div>
   <div class="card-body">
-    <h1 class="card-title" style="font-size: 45px;">3 Pending</h1>
+    <h1 class="card-title" style="font-size: 45px;">1 Pending</h1>
     
   </div>
 </div>                   
@@ -63,7 +63,7 @@
 <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
   <div class="card-header">Complete Booking</div>
   <div class="card-body">
-    <h1 class="card-title" style="font-size: 45px;">3 Complete</h1>
+    <h1 class="card-title" style="font-size: 45px;">1 Complete</h1>
     
   </div>
 </div>                   

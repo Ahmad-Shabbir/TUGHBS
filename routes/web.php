@@ -10,6 +10,9 @@ use App\Http\Controllers\Backend\RoomController;
 use App\Http\Controllers\Frontend\FrontendRoomController;
 use App\Http\Controllers\Frontend\BookingController;
 use App\Http\Controllers\Backend\RoomListController;
+use App\Http\Controllers\Backend\ReportController;
+use App\Http\Controllers\Backend\GalleryController;
+use App\Http\Controllers\Backend\RoleController;
 
 //Route::get('/', function () {
    // return view('welcome');
@@ -108,6 +111,74 @@ Route::controller(RoomListController::class)->group(function(){
 
 });
 
+
+/// Booking Report All Route 
+Route::controller(ReportController::class)->group(function(){ 
+    Route::get('/booking/report/', 'BookingReport')->name('booking.report');
+    Route::post('/search-by-date', 'SearchByDate')->name('search-by-date');
+
+});
+
+
+/// Gallery All Route 
+Route::controller(GalleryController::class)->group(function(){
+
+    Route::get('/all/gallery', 'AllGallery')->name('all.gallery'); 
+    Route::get('/add/gallery', 'AddGallery')->name('add.gallery');
+    Route::post('/store/gallery', 'StoreGallery')->name('store.gallery'); 
+    Route::get('/edit/gallery/{id}', 'EditGallery')->name('edit.gallery');
+    Route::post('/update/gallery', 'UpdateGallery')->name('update.gallery');
+    Route::get('/delete/gallery/{id}', 'DeleteGallery')->name('delete.gallery');
+    Route::post('/delete/gallery/multiple', 'DeleteGalleryMultiple')->name('delete.gallery.multiple');
+ // contact message admin view
+  Route::get('/contact/message', 'AdminContactMessage')->name('contact.message');
+
+
+
+});
+
+
+/// Permission All Route 
+Route::controller(RoleController::class)->group(function(){
+
+    Route::get('/all/permission', 'AllPermission')->name('all.permission');
+    Route::get('/add/permission', 'AddPermission')->name('add.permission');
+    Route::post('/store/permission', 'StorePermission')->name('store.permission');
+    Route::get('/edit/permission/{id}', 'EditPermission')->name('edit.permission');
+    Route::post('/update/permission', 'UpdatePermission')->name('update.permission');
+    Route::get('/delete/permission/{id}', 'DeletePermission')->name('delete.permission');
+    Route::get('/import/permission', 'ImportPermission')->name('import.permission');
+    Route::get('/export', 'Export')->name('export');
+    Route::post('/import', 'Import')->name('import');
+});
+
+/// Role All Route 
+Route::controller(RoleController::class)->group(function(){
+
+    Route::get('/all/roles', 'AllRoles')->name('all.roles');
+    Route::get('/add/roles', 'AddRoles')->name('add.roles');
+    Route::post('/store/roles', 'StoreRoles')->name('store.roles');
+    Route::get('/edit/roles/{id}', 'EditRoles')->name('edit.roles');
+    Route::post('/update/roles', 'UpdateRoles')->name('update.roles');
+    Route::get('/delete/roles/{id}', 'DeleteRoles')->name('delete.roles');
+    Route::get('/add/roles/permission', 'AddRolesPermission')->name('add.roles.permission');
+    Route::post('/role/permission/store', 'RolePermissionStore')->name('role.permission.store');
+    Route::get('/all/roles/permission', 'AllRolesPermission')->name('all.roles.permission');
+    Route::get('/admin/edit/roles/{id}', 'AdminEditRoles')->name('admin.edit.roles');
+    Route::post('/admin/roles/update/{id}', 'AdminRolesUpdate')->name('admin.roles.update');
+    Route::get('/admin/delete/roles/{id}', 'AdminDeleteRoles')->name('admin.delete.roles');
+
+});
+
+/// Admin User All Route 
+Route::controller(AdminController::class)->group(function(){
+
+    Route::get('/all/admin', 'AllAdmin')->name('all.admin'); 
+    Route::get('/add/admin', 'AddAdmin')->name('add.admin');
+    Route::post('/store/admin', 'StoreAdmin')->name('store.admin');
+});
+
+
 }); // End Admin Group Middleware 
 
 
@@ -141,5 +212,29 @@ Route::middleware(['auth'])->group(function(){
         Route::get('/assign_room/store/{booking_id}/{room_number_id}', 'AssignRoomStore')->name('assign_room_store');
         Route::get('/assign_room_delete/{id}', 'AssignRoomDelete')->name('assign_room_delete');
 
+
+          ////////// User Booking Route
+
+    Route::get('/user/booking', 'UserBooking')->name('user.booking');
+    Route::get('/user/invoice/{id}', 'UserInvoice')->name('user.invoice');
+
     });
+});
+
+/// Frontend Gallery All Route 
+Route::controller(GalleryController::class)->group(function(){
+
+    Route::get('/gallery', 'ShowGallery')->name('show.gallery');
+
+     // Contact All Route 
+     Route::get('/contact', 'ContactUs')->name('contact.us');
+     Route::post('/store/contact', 'StoreContactUs')->name('store.contact');
+
+});
+
+Route::controller(BookingController::class)->group(function(){
+
+    Route::post('/mark-notification-as-read/{notification}', 'MarkAsRead');
+
+
 });

@@ -116,6 +116,18 @@
 
 
 
+            <div class="col-md-6">
+            <label for="input7" class="form-label">Category</label>
+            <select name="category" id="input7" class="form-select">
+            <option selected="">Choose...</option>
+            <option value="Private" {{ $editData->category== 'Private'?'selected':''}}> Private </option>
+            <option value="Semi Private" {{ $editData->category == 'Semi Private'?'selected':''}}>Semi Private </option>
+            <option value="Semi Official" {{ $editData->category == 'Semi Official'?'selected':''}}>Semi Official </option>
+            </select>
+            </div>
+
+
+
             <div class="col-md-12">
             <label for="input11" class="form-label">Short Description </label>
             <textarea name="short_desc" class="form-control" id="input11" placeholder="Address ..." rows="3">{{ $editData->short_desc }}</textarea>

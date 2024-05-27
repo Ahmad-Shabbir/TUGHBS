@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\User;
 
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
@@ -113,5 +115,48 @@ public function AdminLogout(Request $request){
 
 }
 
+
+
+//////////// Admin User all Method//////////
+
+public function AllAdmin(){
+
+    $alladmin = User::where('role','admin')->get();
+    return view('backend.pages.admin.all_admin',compact('alladmin'));
+
+}// End Method 
+
+public function AddAdmin(){
+
+    $roles = Role::all();
+    return view('backend.pages.admin.add_admin',compact('roles'));
+
+}// End Method 
+
+
+public function storeAdmin(Request $request)
+{
+    $user = new User();
+    $user->name = $request->name;
+    $user->email = $request->email;
+    $user->phone = $request->phone;
+    $user->address = $request->address;
+    $user->password = Hash::make($request->password);
+    $user->role = 'admin';
+    $user->status = 'active';
+    $user->save();
+
+    if ($request->roles) {
+        // Assuming you're using Spatie's Laravel Permission
+        $user->assignRole($request->roles); // Make sure $request->roles is an array
+    }
+
+    $notification = [
+        'message' => 'Admin User Created Successfully',
+        'alert-type' => 'success'
+    ];
+
+    return redirect()->route('all.admin')->with($notification);
+}
 
 }

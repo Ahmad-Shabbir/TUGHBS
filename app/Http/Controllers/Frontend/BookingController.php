@@ -20,6 +20,12 @@ use Illuminate\Support\Facades\Validator;
 use App\Models\BookingRoomList;
 use App\Models\RoomNumber;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\BookConfirm;
+use App\Models\User;
+use App\Notifications\BookingComplete;
+use Illuminate\Support\Facades\Notification;
+
 
 class BookingController extends Controller
 {
@@ -84,6 +90,8 @@ class BookingController extends Controller
 
     public function CheckoutStore(Request $request){
        
+        $user = User::where('role','admin')->get();
+
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'email' => 'required',
@@ -185,6 +193,9 @@ class BookingController extends Controller
             'message' => 'Booking Added Successfully',
             'alert-type' => 'success'
         ); 
+
+        Notification::send($user, new BookingComplete($request->name));
+
         return redirect('/')->with($notification);  
 
 
@@ -210,6 +221,27 @@ class BookingController extends Controller
         $booking->payment_status = $request->payment_status;
         $booking->status = $request->status;
         $booking->save();
+
+
+        /// Start Sent Email 
+
+        $sendmail = Booking::find($id);
+
+        $data = [
+            'check_in' => $sendmail->check_in,
+            'check_out' => $sendmail->check_out,
+            'name' => $sendmail->name,
+            'email' => $sendmail->email,
+            'phone' => $sendmail->phone,
+        ];
+
+        Mail::to($sendmail->email)->send(new BookConfirm($data));
+
+        /// End Sent Email 
+
+
+
+
 
         $notification = array(
             'message' => 'Information Updated Successfully',
@@ -336,6 +368,40 @@ class BookingController extends Controller
         return $pdf->download('invoice.pdf');
 
      }// End Method 
+
+
+
+     public function UserBooking(){
+        $id = Auth::user()->id;
+        $allData = Booking::where('user_id',$id)->orderBy('id','desc')->get();
+        return view('frontend.dashboard.user_booking',compact('allData'));
+
+     }// End Method 
+
+     public function UserInvoice($id){
+
+        $editData = Booking::with('room')->find($id);
+        $pdf = Pdf::loadView('backend.booking.booking_invoice',compact('editData'))->setPaper('a4')->setOption([
+            'tempDir' => public_path(),
+            'chroot' => public_path(),
+        ]);
+        return $pdf->download('invoice.pdf');
+
+     }// End Method 
+
+     public function MarkAsRead(Request $request , $notificationId){
+
+        $user = Auth::user();
+        $notification = $user->notifications()->where('id',$notificationId)->first();
+
+        if ($notification) {
+            $notification->markAsRead();
+        }
+
+  return response()->json(['count' => $user->unreadNotifications()->count()]);
+
+     }// End Method 
+
 
 
 }

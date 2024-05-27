@@ -70,6 +70,18 @@
         </div>
 
 
+        
+        <div class="col-lg-12">
+    <div class="form-group">
+        <label>Room Category</label>
+        <select class="form-control">
+            <option value="private">Private Category</option>
+            <option value="semi-private">Semi Private</option>
+            <option value="semi-official">Semi Official</option>
+        </select>	
+    </div>
+</div>
+
         <input type="hidden" id="total_adult" value="{{ $roomdetails->total_adult }}">
         <input type="hidden" id="room_price" value="{{ $roomdetails->price }}">
         <input type="hidden" id="discount_p" value="{{ $roomdetails->discount }}">
@@ -151,7 +163,7 @@
                         <ul>
 
                             <li>
-                               <b> Basic : ${{ $roomdetails->price }}/Night/Room</b>
+                               <b> Basic : ₹{{ $roomdetails->price }}/Night/Room</b>
                             </li> 
 
                         </ul>

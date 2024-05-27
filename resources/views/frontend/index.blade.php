@@ -5,7 +5,7 @@
 <div class="banner-area" style="height: 480px;">
             <div class="container">
                 <div class="banner-content">
-                    <h1>Book Your Ideal Stay at Tezpur University</h1>
+                    <h1>Book Your Stay at Tezpur University</h1>
                     
                      
                 </div>
@@ -52,6 +52,19 @@
                                 </div>
                             </div>
 
+                            <div class="col-lg-2 col-md-2">
+                     <div class="form-group">
+                <label>Category</label>
+                 <select class="form-control">
+              <option value="private">Private</option>
+              <option value="semi-private">Semi Private</option>
+              <option value="semi-official">Semi Official</option>
+           </select>	
+               </div>
+                </div>
+
+
+
                             <div class="col-lg-4 col-md-4">
                                 <button type="submit" class="default-btn btn-bg-one border-radius-5">
                                     Check Availability
@@ -70,17 +83,17 @@
 
         <!-- Room Area End -->
 
-        <!-- Book Area Two-->
+        <!-- Book Area Two
         @include('frontend.home.room_area_two')
-        <!-- Book Area Two End -->
+        Book Area Two End -->
 
         <!-- Services Area Three -->
         <!-- @include('frontend.home.services') -->
         <!-- Services Area Three End -->
 
-        <!-- Team Area Three -->
+        <!-- Team Area Three
         @include('frontend.home.team')
-        <!-- Team Area Three End -->
+        Team Area Three End -->
 
         <!-- 
         <div class="testimonials-area-three pb-70">
@@ -140,9 +153,9 @@
         </div>
          Testimonials Area -->
 
-        <!-- FAQ Area -->
+        <!-- FAQ Area 
         @include('frontend.home.faq')
-        <!-- FAQ Area End -->
+        FAQ Area End -->
 
         <!-- Blog Area -->
         <!--@include('frontend.home.blog')-->

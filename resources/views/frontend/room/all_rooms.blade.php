@@ -36,7 +36,7 @@
                     <div class="content">
                     <h6><a href="{{ url('room/details/'.$item->id) }}">{{ $item['type']['name'] }}</a></h6>
                         <ul>
-                            <li class="text-color">${{ $item->price }}</li>
+                            <li class="text-color">₹{{ $item->price }}</li>
                             <li class="text-color">Per Night</li>
                         </ul>
                         <div class="rating text-color">

@@ -48,7 +48,7 @@
                     <h6>
                     <a href="{{ route('search_room_details',$item->id.'?check_in='.old('check_in').'&check_out='.old('check_out').'&persion='.old('persion'))}}">{{ $item['type']['name'] }}</a></h6>
                         <ul>
-                            <li class="text-color">${{ $item->price }}</li>
+                            <li class="text-color">₹{{ $item->price }}</li>
                             <li class="text-color">Per Night</li>
                         </ul>
                         <div class="rating text-color">
